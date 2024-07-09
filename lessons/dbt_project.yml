@@ -21,3 +21,16 @@ snapshot-paths: ["snapshots"]
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
+
+# Configuring models
+# Full documentation: https://docs.getdbt.com/docs/configuring-models
+
+models:
+  lessons:
+    # Config indicated by "+"" and applies to all files under models/lessons/
+    # It would still work without the "+", but it's useful to distinguish from a resource path.
+    # These settings can be overridden in the individual model files using the `{{ config(...) }}` macro.
+    +materialized: table # Default to table materialisation
+    +persist_docs: # Writes all of our column descriptions into BigQuery!
+      relation: true
+      columns: true
