@@ -34,3 +34,9 @@ models:
     +persist_docs: # Writes all of our column descriptions into BigQuery!
       relation: true
       columns: true
+    # Tables deleted after 168 hours
+    +hours_to_expiration: 168
+
+tests:
+  lessons:
+    +severity: warn # All test in lessons project default to warn
