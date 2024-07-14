@@ -5,7 +5,6 @@ models:
     description: "Table of products on the online store"
     columns:
       - name: product_id
-        description: "primary key"
         tests:
           - primary_key:
               severity: error
@@ -24,18 +23,16 @@ models:
           - dbt_expectations.expect_column_values_to_be_between:
               min_value: 0
           - dbt_utils.expression_is_true:
-              name: retail_price_greater_than_cost
               expression: ">= cost"
-              where: "retail_price IS NOT NULL" # this is only for clarification, it's optional
-          
+
       - name: department
         description: "Whether the item is Menswear or Womenswear"
         tests:
           - not_null
           - accepted_values:
               values:
-                - Men
-                - Women
-              # quote defaults to true, but this just shows how you could set it to false
-              # if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
+                - "Men"
+                - "Women"
+              # quote defaults to true, but this just shows how you could set it to
+              # false if you wanted to have non-string values (e.g. numbers or a TRUE/FALSE column)
               quote: true
