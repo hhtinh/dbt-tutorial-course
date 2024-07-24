@@ -1,11 +1,11 @@
 /*
     Checks that, for any order, that the number of line items in the order_items table
-	matches the num_items_ordered column in the orders table.
+    matches the num_items_ordered column in the orders table.
 
     Returns all of the rows where we don't get a match
 
     We could run multiple checks here (e.g. check only 1 user_id per order, or that the shipped_at timestamps
-	are all the same for a given order), but this is just an example of a custom test.
+    are all the same for a given order), but this is just an example of a custom test.
 */
 
 WITH order_details AS (

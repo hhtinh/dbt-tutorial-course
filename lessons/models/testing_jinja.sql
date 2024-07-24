@@ -3,7 +3,7 @@
 -- A comment that will be present
 
 {%- set my_long_variable %}
-	SELECT 1 AS my_col
+    SELECT 1 AS my_col
 {%- endset %}
 
 {{- my_long_variable -}}
@@ -12,7 +12,7 @@
 
 SELECT
 {%- for item in my_list %}
-	{{ item }}{% if not loop.last %},{% endif %}
+    {{ item }}{% if not loop.last %},{% endif %}
 {%- endfor %}
 
 {{ my_list }}
